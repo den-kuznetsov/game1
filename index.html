@@ -35,6 +35,7 @@
   const brickOffsetTop = 30;
   const brickOffsetLeft = 30;
   const bricks = [];
+  let brick = brickRowCount * brickColumnCount; //это очень важно для того чтобы игру можна было б вийграть
 
   for (let c = 0; c < brickColumnCount; c++) {
     bricks[c] = [];
@@ -100,6 +101,20 @@
     ctx.fill();
     ctx.closePath();
   }
+  function collisionDetection() {
+  for (let c = 0; c < brickColumnCount; c++) {
+    for (let r = 0; r < brickRowCount; r++) {
+      const b = bricks[c][r];
+      if (b.status === 1) {
+        if (x > b.x && x < b.x + brickWidth && y > b.y && y < b.y + brickHeight) {
+          brick-- //это очень важно для того чтобы игру можна было б вийграть
+          b.status = 0;
+          dy = -dy;
+        }
+      }
+    }
+  }
+}
   function drawBricks() {
     for (let c = 0; c < brickColumnCount; c++) {
       for (let r = 0; r < brickRowCount; r++) {
@@ -137,8 +152,11 @@
       } else {
         alert('GAME OVER');
         clearInterval(interval);
-        document.location.reload();
       }
+    }
+    if (brick == 0) {
+    clearInterval(inetval);
+    alert('MISSION PASSED!\nRESPECT \+');
     }
     if (rightPressed && paddleX < canvas.width - paddleWidth) {
       paddleX += 7;
