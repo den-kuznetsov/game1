@@ -40,6 +40,7 @@
   let lives = 3;
   let bCollor = "#0095DD";
 
+
   for (let c = 0; c < brickColumnCount; c++) {
     bricks[c] = [];
     for (let r = 0; r < brickRowCount; r++) {
@@ -145,7 +146,7 @@
       clearInterval(interval);
       document.location.reload();
     } 
-    
+
     if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
       dx = -dx;
     }
@@ -195,13 +196,13 @@
     ctx.font = "16px Arial";
     ctx.fillStyle = "#0095DD";
     ctx.fillText("Score: "+score, 8, 20);
-}
+  }
 
- function drawLives() {
+  function drawLives() {
     ctx.font = "16px Arial";
     ctx.fillStyle = "#0095DD";
     ctx.fillText("Lives: "+lives, 400, 20);
-}
+  }
 
   function collisionDetection() {
     for (let c = 0; c<brickColumnCount; c++) {
@@ -234,12 +235,14 @@
       leftPressed = false;
     }
   }
+
   for (let c = 0; c < brickColumnCount; c++) {
     bricks[c] = [];
     for (let r = 0; r < brickRowCount; r++) {
     bricks[c][r] = {x: 0, y: 0, status: 1};
     }
   }
+
   const interval = setInterval(draw, 10);
 </script>
 </body>
