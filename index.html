@@ -35,6 +35,11 @@
   const brickOffsetTop = 30;
   const brickOffsetLeft = 30;
   const bricks = [];
+  const brick = brickRowCount * brickColumnCount;
+  let score = 0;
+  let lives = 3;
+  let bCollor = "#0095DD";
+
 
   for (let c = 0; c < brickColumnCount; c++) {
     bricks[c] = [];
@@ -86,10 +91,12 @@
   let dx = 2;
   let dy = -2;
 
+
+
   function drawBall() {
     ctx.beginPath();
     ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
-    ctx.fillStyle = '#0095DD';
+    ctx.fillStyle = bCollor;
     ctx.fill();
     ctx.closePath();
   }
@@ -100,6 +107,9 @@
     ctx.fill();
     ctx.closePath();
   }
+
+
+
   function drawBricks() {
     for (let c = 0; c < brickColumnCount; c++) {
       for (let r = 0; r < brickRowCount; r++) {
@@ -126,9 +136,17 @@
     drawPaddle();
     drawBricks();
     collisionDetection();
+    drawScore();
+    drawLives();
     x += dx;
     y += dy;
-   
+    
+    if (score === brick) {
+      alert('You are win');
+      clearInterval(interval);
+      document.location.reload();
+    } 
+
     if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
       dx = -dx;
     }
@@ -139,17 +157,30 @@
       if (x > paddleX && x < paddleX + paddleWidth) {
         dy = -dy;
       } else {
+        dy = -dy;
+        lives--;
+    if (lives === 3) {
+      bCollor = "#0095DD";
+    } else if (lives === 2) {
+      bCollor = "#FF8C00";
+    } else if (lives === 1) {
+      bCollor = "#FF0000";
+    }
+        
+      } if (lives === 0) {
         alert('GAME OVER');
         clearInterval(interval);
         document.location.reload();
       }
     }
+
     if (rightPressed && paddleX < canvas.width - paddleWidth) {
       paddleX += 7;
     } else if (leftPressed && paddleX > 0) {
       paddleX -= 7;
     }
   }
+
   document.addEventListener('keydown', keyDownHandler, false);
   document.addEventListener('keyup', keyUpHandler, false);
   document.addEventListener('mousemove', mouseMoveHandler, false);
@@ -160,6 +191,19 @@
        paddleX = relativeX - paddleWidth/2;
    }
   }
+
+  function drawScore() {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("Score: "+score, 8, 20);
+  }
+
+  function drawLives() {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("Lives: "+lives, 400, 20);
+  }
+
   function collisionDetection() {
     for (let c = 0; c<brickColumnCount; c++) {
       for(let r = 0; r<brickRowCount; r++) {
@@ -169,6 +213,8 @@
             console.log('collision');
             dy = -dy;
             b.status = 0;
+            score++;
+            console.log("Score + 1");
           }
         }
       }
@@ -189,12 +235,14 @@
       leftPressed = false;
     }
   }
-   for (let c = 0; c < brickColumnCount; c++) {
-  bricks[c] = [];
-  for (let r = 0; r < brickRowCount; r++) {
+
+  for (let c = 0; c < brickColumnCount; c++) {
+    bricks[c] = [];
+    for (let r = 0; r < brickRowCount; r++) {
     bricks[c][r] = {x: 0, y: 0, status: 1};
+    }
   }
-}
+
   const interval = setInterval(draw, 10);
 </script>
 </body>
