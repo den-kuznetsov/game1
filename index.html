@@ -19,6 +19,9 @@
 <body>
 <canvas id="game" width="480" height="320"></canvas>
 <script>
+  
+  
+function newGame() {  
   const canvas = document.getElementById('game');
   const ctx = canvas.getContext('2d');
   const ballRadius = 10;
@@ -489,6 +492,10 @@
   }
 
   const interval = setInterval(draw, 10);
+}
+  
+newGame();
+  
 </script>
 </body>
 </html>
