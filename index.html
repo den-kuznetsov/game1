@@ -19,9 +19,7 @@
 <body>
 <canvas id="game" width="480" height="320"></canvas>
 <script>
-  
-  
-function newGame() {  
+
   const canvas = document.getElementById('game');
   const ctx = canvas.getContext('2d');
   const ballRadius = 10;
@@ -333,6 +331,87 @@ function newGame() {
     //!
   }
   
+  function youWin () { //не готова до конца
+  //y
+  ctx.beginPath();
+    ctx.rect(0, 0, 480, 320);
+    ctx.fillStyle = '#228B22';
+    ctx.fill();
+    ctx.closePath();
+  ctx.beginPath();
+    ctx.rect(100, 75, 20, 20);
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fill();
+    ctx.closePath();
+  ctx.beginPath();
+    ctx.rect(110, 95, 20, 20);
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fill();
+    ctx.closePath();
+  ctx.beginPath();
+    ctx.rect(120, 115, 40, 20);
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fill();
+    ctx.closePath();
+  ctx.beginPath();
+    ctx.rect(130, 135, 20, 20);
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fill();
+    ctx.closePath();
+  ctx.beginPath();
+    ctx.rect(120, 155, 20, 20);
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fill();
+    ctx.closePath();
+  ctx.beginPath();
+    ctx.rect(160, 75, 20, 20);
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fill();
+    ctx.closePath();
+  ctx.beginPath();
+    ctx.rect(150, 95, 20, 20);
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fill();
+    ctx.closePath();
+  //o
+  ctx.beginPath();
+    ctx.rect(190, 75, 20, 80);
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fill();
+    ctx.closePath();
+  ctx.beginPath();
+    ctx.rect(190, 135, 80, 20);
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fill();
+    ctx.closePath();
+  ctx.beginPath();
+    ctx.rect(190, 75, 80, 20);
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fill();
+    ctx.closePath();
+  ctx.beginPath();
+    ctx.rect(250, 75, 20, 80);
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fill();
+    ctx.closePath();
+  //u
+  ctx.beginPath();
+    ctx.rect(280, 75, 20, 80);
+    ctx.fillStyle = '#FFFFFF'
+    ctx.fill();
+    ctx.closePath();
+  ctx.beginPath();
+    ctx.rect(280, 135, 80, 20);
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fill();
+    ctx.closePath();
+  ctx.beginPath();
+    ctx.rect(340, 75, 20, 80);
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fill();
+    ctx.closePath();
+}
+  
   //ball
   let x = canvas.width / 2;
   let y = canvas.height - 30;
@@ -391,9 +470,8 @@ function newGame() {
     y += dy;
     
     if (score === brick) {
-      alert('You are win');
+      youWin();
       clearInterval(interval);
-      document.location.reload();
     } 
 
     if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
@@ -492,9 +570,6 @@ function newGame() {
   }
 
   const interval = setInterval(draw, 10);
-}
-  
-newGame();
   
 </script>
 </body>
