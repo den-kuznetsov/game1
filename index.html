@@ -333,6 +333,137 @@ function newGame() {
     //!
   }
   
+  function youWin () {
+  //y
+  ctx.beginPath();
+    ctx.rect(100, 65, 20, 20);
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fill();
+  ctx.beginPath();
+    ctx.rect(110, 85, 20, 20);
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fill();
+    ctx.closePath();
+  ctx.beginPath();
+    ctx.rect(120, 105, 40, 20);
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fill();
+    ctx.closePath();
+  ctx.beginPath();
+    ctx.rect(130, 125, 20, 30);
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fill();
+    ctx.closePath();
+  ctx.beginPath();
+    ctx.rect(160, 65, 20, 20);
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fill();
+    ctx.closePath();
+  ctx.beginPath();
+    ctx.rect(150, 85, 20, 20);
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fill();
+    ctx.closePath();
+  //o
+  ctx.beginPath();
+    ctx.rect(190, 65, 20, 80);
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fill();
+    ctx.closePath();
+  ctx.beginPath();
+    ctx.rect(190, 125, 80, 20);
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fill();
+    ctx.closePath();
+  ctx.beginPath();
+    ctx.rect(190, 65, 80, 20);
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fill();
+    ctx.closePath();
+  ctx.beginPath();
+    ctx.rect(250, 65, 20, 80);
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fill();
+    ctx.closePath();
+  //u
+  ctx.beginPath();
+    ctx.rect(280, 65, 20, 80);
+    ctx.fillStyle = '#FFFFFF'
+    ctx.fill();
+    ctx.closePath();
+  ctx.beginPath();
+    ctx.rect(280, 125, 80, 20);
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fill();
+    ctx.closePath();
+  ctx.beginPath();
+    ctx.rect(340, 65, 20, 80);
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fill();
+    ctx.closePath();
+  //w
+  ctx.beginPath();
+    ctx.rect(100, 165, 20, 20);
+    ctx.fillStyle = '#FFFFF';
+    ctx.fill();
+    ctx.closePath();
+  ctx.beginPath();
+    ctx.rect(110, 185, 15, 40);
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fill();
+    ctx.closePath();
+  ctx.beginPath();
+    ctx.rect(120, 225, 40, 20);
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fill();
+    ctx.closePath();
+  ctx.beginPath();
+    ctx.rect(135, 185, 10, 40);
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fill();
+    ctx.closePath();
+  ctx.beginPath();
+    ctx.rect(155, 185, 15, 40);
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fill();
+    ctx.closePath();
+  ctx.beginPath();
+    ctx.rect(160, 165, 20, 20);
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fill();
+    ctx.closePath();
+  ctx.beginPath();
+    ctx.rect(220, 165, 20, 80);
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fill();
+    ctx.closePath();
+  ctx.beginPath();
+    ctx.rect(220, 165, 20, 80);
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fill();
+    ctx.closePath();
+  ctx.beginPath();
+    ctx.rect(280, 165, 20, 80);
+    ctx.fillStyle = '#FFFFF';
+    ctx.fill();
+    ctx.closePath();
+  ctx.beginPath();
+    ctx.rect(300, 175, 10, 20);
+    ctx.fillStyle = '#FFFFF';
+    ctx.fill();
+    ctx.closePath();
+  ctx.beginPath();
+    ctx.rect(310, 170, 50, 15);
+    ctx.fillStyle = '#FFFFF';
+    ctx.fill();
+    ctx.closePath();
+  ctx.beginPath();
+    ctx.rect(340, 170, 20, 75);
+    ctx.fillStyle = '#FFFFF';
+    ctx.fill();
+    ctx.closePath();
+  }
+  
   //ball
   let x = canvas.width / 2;
   let y = canvas.height - 30;
@@ -391,9 +522,8 @@ function newGame() {
     y += dy;
     
     if (score === brick) {
-      alert('You are win');
+      youWin();
       clearInterval(interval);
-      document.location.reload();
     } 
 
     if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
